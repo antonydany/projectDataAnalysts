@@ -30,6 +30,7 @@
         {
             this.gridAllData = new System.Windows.Forms.DataGridView();
             this.importCsvBtn = new System.Windows.Forms.Button();
+            this.btnCleanGridData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridAllData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,21 +42,32 @@
             this.gridAllData.Size = new System.Drawing.Size(722, 315);
             this.gridAllData.TabIndex = 0;
             // 
-            // button import csv
+            // importCsvBtn
             // 
-            this.importCsvBtn.Location = new System.Drawing.Point(680, 393);
-            this.importCsvBtn.Name = "importCsv";
+            this.importCsvBtn.Location = new System.Drawing.Point(596, 393);
+            this.importCsvBtn.Name = "importCsvBtn";
             this.importCsvBtn.Size = new System.Drawing.Size(75, 23);
             this.importCsvBtn.TabIndex = 1;
             this.importCsvBtn.Text = "Import CSV";
             this.importCsvBtn.UseVisualStyleBackColor = true;
             this.importCsvBtn.Click += new System.EventHandler(this.ImportCsvBtn_Click);
             // 
+            // cleanDataGridView
+            // 
+            this.btnCleanGridData.Location = new System.Drawing.Point(680, 393);
+            this.btnCleanGridData.Name = "btnCleanGridData";
+            this.btnCleanGridData.Size = new System.Drawing.Size(75, 23);
+            this.btnCleanGridData.TabIndex = 2;
+            this.btnCleanGridData.Text = "Limpiar";
+            this.btnCleanGridData.UseVisualStyleBackColor = true;
+            this.btnCleanGridData.Click += new System.EventHandler(this.BtnCleanGridData_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCleanGridData);
             this.Controls.Add(this.importCsvBtn);
             this.Controls.Add(this.gridAllData);
             this.Name = "MainWindow";
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.DataGridView gridAllData;
         private System.Windows.Forms.Button importCsvBtn;
+        private System.Windows.Forms.Button btnCleanGridData;
     }
 }
 
