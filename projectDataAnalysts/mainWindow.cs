@@ -37,6 +37,22 @@ namespace projectDataAnalysts
             {
                 try
                 {
+                    WriteToGridAllData(openFileDialogCsv.FileName);
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions here
+                    MessageBox.Show($"Error reading file: {ex.Message}");
+                }
+            }
+        }
+
+        private void BtnCleanGridData_Click(object sender, EventArgs e)
+        {
+            gridAllData.DataSource = null;
+        }
+        private void WriteToGridAllData(string filename)
+        {
                     //base de datos para TODA la info de la tabla
                     DataTable allDataTable = new DataTable();
 
