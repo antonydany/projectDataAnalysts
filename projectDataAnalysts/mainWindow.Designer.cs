@@ -1,4 +1,6 @@
-﻿namespace projectDataAnalysts
+﻿using System.Windows.Forms;
+
+namespace projectDataAnalysts
 {
     partial class MainWindow
     {
@@ -47,6 +49,9 @@
             this.gridAllData.Name = "gridAllData";
             this.gridAllData.Size = new System.Drawing.Size(776, 375);
             this.gridAllData.TabIndex = 0;
+            this.gridAllData.AllowDrop = true;
+            this.gridAllData.DragEnter += new DragEventHandler(this.ImportCsvDropGridData_DragEnter);
+            this.gridAllData.DragDrop += new DragEventHandler(this.ImportCsvDropGridData_DragDrop);
             // 
             // importCsvBtn
             // 
