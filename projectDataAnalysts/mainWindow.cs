@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projectDataAnalysts
@@ -27,12 +22,19 @@ namespace projectDataAnalysts
 
         private void ImportCsvDropGridData_DragEnter(object sender, DragEventArgs e)
         {
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (files.Length == 1 && Path.GetExtension(files[0]).ToLower() == ".csv")
+                string lastFile = files[files.Length - 1];
+
+                if (files.Length == 1 && Path.GetExtension(lastFile).ToLower() == ".csv")
                 {
                     e.Effect = DragDropEffects.Copy;
+                }
+                else
+                {
+                    e.Effect = DragDropEffects.None;
                 }
             }
         }
@@ -40,10 +42,10 @@ namespace projectDataAnalysts
         //cargar svg arrastrando el archivo al DataGridView
         private void ImportCsvDropGridData_DragDrop(object sender, DragEventArgs e)
         {
-            string[] sources = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            Console.WriteLine(sources[0]);
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            string lastFile = files[files.Length - 1];
             //activar cuando se suelta el objeto
-            WriteToGridAllData(sources[0]);
+            WriteToGridAllData(lastFile);
         }
 
         private void ImportCsvBtn_Click(object sender, EventArgs e)
@@ -61,7 +63,6 @@ namespace projectDataAnalysts
                 }
                 catch (Exception ex)
                 {
-                    // Handle any exceptions here
                     MessageBox.Show($"Error reading file: {ex.Message}");
                 }
             }
@@ -95,11 +96,6 @@ namespace projectDataAnalysts
                     if (values.Length == headers.Length)
                     {
                         allDataTable.Rows.Add(values);
-                    }
-                    else
-                    {
-
-                        Console.WriteLine('e');
                     }
                 }
             }
